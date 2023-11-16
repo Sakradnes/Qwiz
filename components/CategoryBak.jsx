@@ -5,6 +5,7 @@ function Category({ category }) {
     <div>
       <div>
         <p>{category.text}</p>
+        <p></p>
       </div>
     </div>
   );
