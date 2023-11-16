@@ -1,15 +1,15 @@
-const router = require('express').Router();
+const router = require("express").Router();
 // const CategoryBak = require('../components/CategoryBak');s
-const CategoryPage = require('../components/CategoryPage');
+const CategoryPage = require("../components/CategoryPage");
 
-const { Category } = require('../db/models');
+const { Category } = require("../db/models");
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const categories = await Category.findAll();
 
     const html = res.renderComponent(CategoryPage, {
-      title: 'Quise-category',
+      title: "Quise-category",
       categories,
     });
     res.status(200).send(html);
