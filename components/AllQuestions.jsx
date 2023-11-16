@@ -8,7 +8,10 @@ return (
  
     <Layout title={title}>  
         <div>
+        <div >
+             
              {questions.map(question => <Question key={question.id} question={question}/>)}
+        </div> 
         </div> 
     </Layout>
  )

@@ -4,7 +4,9 @@ function Category({ category }) {
   return (
     <div>
       <div>
-        <p>{category.text}</p>
+        <p><a href={`/questions/${category.id}`} className="btn btn-primary">
+        {category.text}</a></p>
+        
         <p></p>
       </div>
     </div>
