@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Category.init(
     {
-      title: {
+      text: {
         allowNull: false,
         type: DataTypes.TEXT,
       },
