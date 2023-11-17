@@ -5,17 +5,17 @@ module.exports = {
       'Categories',
       [
         {
-          text: 'One',
+          text: 'Кино',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          text: 'Two',
+          text: 'Тотошка',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          text: 'Three',
+          text: 'Это чьЁ?',
           createdAt: new Date(),
           updatedAt: new Date(),
         },

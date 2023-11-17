@@ -4,17 +4,16 @@ const Layout = require('./Layout');
 const Question = require('./Question'); 
 const Answer = require('./Answer');
 
-function AllQuestion({ title , questions }){
+function AllQuestion({ title , questions , user}){
 return ( 
     <Layout title={title}>  
-        <div className="container" id='MainQuestion'>
-            <div className='h2Auth privet'>ПРИВЕТСВУЕМ ТЕБЯ, ЗЕМЛЯНИН</div>
-             <Question key={questions[0].id} question={questions[0]}/>
-             <div className='free'></div>
-             <Answer key={questions[0].id} question={questions[0]}/>
-        </div> 
-       
 
+        <div className="cont" id='MainQuestion'>
+           { user && <div>ПРИВЕТСВУЕМ ТЕБЯ, {user.name}</div>}
+             <Question key={questions[0].id} question={questions[0]} user={user}/>
+             <div className='free'></div>
+             <Answer key={questions[0].id} question={questions[0]} user={user}/>
+        </div> 
     </Layout>
  )
 }
