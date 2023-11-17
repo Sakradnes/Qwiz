@@ -6,10 +6,10 @@ console.log('var1');
 
 areaAnswer.addEventListener("keydown", async (event) => {
   if (event.target.classList.contains("inputAnswer")&&(event.key=="Enter")) {
-    console.log('var2');
+    // console.log('var2');
     const card = document.querySelector('.all');
-    console.log();
-    console.log(card.dataset.idi,'------------',document.querySelector('.yourScore').innerHTML,'______________-', document.querySelector('.Dif').innerHTML);
+    // console.log();
+    // console.log(card.dataset.idi,'------------',document.querySelector('.yourScore').innerHTML,'______________-', document.querySelector('.Dif').innerHTML);
             const res = await fetch(`/questions/${card.dataset.idi}/answer`,{
             method:'PUT',
             headers: {
@@ -27,9 +27,9 @@ areaAnswer.addEventListener("keydown", async (event) => {
          console.log(questionData);
          document.querySelector('.Compare').innerHTML=questionData.message;
          if(questionData.difficulty){
-          document.querySelector('.Dif').innerHTML=questionData.difficulty;}
+          document.querySelector('.Dif').innerHTML="Cложность вопроса:"+questionData.difficulty;}
          else{
-          document.querySelector('.yourScore').innerHTML=questionData.score;
+          document.querySelector('.yourScore').innerHTML='Ваши баллы:'+questionData.score;
          }
   }
 });
