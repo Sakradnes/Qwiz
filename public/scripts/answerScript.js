@@ -1,11 +1,15 @@
 const answerInput = document.querySelector(".inputAnswer");
 const areaAnswer = document.querySelector("#MainQuestion");
+console.log('var1');
 
 
 
 areaAnswer.addEventListener("keydown", async (event) => {
   if (event.target.classList.contains("inputAnswer")&&(event.key=="Enter")) {
+    console.log('var2');
     const card = document.querySelector('.all');
+    console.log();
+    console.log(card.dataset.idi,'------------',document.querySelector('.yourScore').innerHTML,'______________-', document.querySelector('.Dif').innerHTML);
             const res = await fetch(`/questions/${card.dataset.idi}/answer`,{
             method:'PUT',
             headers: {
