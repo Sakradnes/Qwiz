@@ -1,8 +1,9 @@
 const React = require('react');
 const Layout = require('./Layout');
 const Category = require('./CategoryBak');
+const Score = require('./Score');
 
-module.exports = function CategoryPage({ title, categories }) {
+module.exports = function CategoryPage({ title, categories , BigScore, user}) {
   return (
     <Layout title={title}>
       <div>
@@ -10,6 +11,7 @@ module.exports = function CategoryPage({ title, categories }) {
           <Category key={category.id} category={category} />
         ))}
       </div>
+      <div><Score key={user.id} BigScore={BigScore} user={user}></Score></div>
     </Layout>
   );
 };
