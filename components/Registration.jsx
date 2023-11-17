@@ -5,10 +5,10 @@ module.exports=function Registration ({title}){
     return(
         <Layout title={title}>
         <div className='container'>
-          <h2 className='h2Auth'>Зарегистрируйся</h2>
+          <h2 className='h2Auth'>мой дорогой друг, Зарегистрируйся</h2>
           <form action='/' method='POST' className='form'>
-            <input name='name' className='inputAuth' placeholder='имя'/>
-            <button type='submit' className='buttonAuth'>сохранить</button>
+            <input name='name' className='inputAuth' placeholder='Введите своё имя'/><br/>
+            <button type='submit' className='buttonAuth'>СОХРАНИТЬ</button>
           </form>
         </div>
         </Layout>
