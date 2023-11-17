@@ -16,8 +16,8 @@ module.exports = function Layout({ title, children }) {
         <script defer src="/scripts/questionScript.js" />
         <script defer src="/scripts/answerScript.js" />
       </head>
-      <Navbar />
-      <body>{children}</body>
+      {/* <Navbar /> */}
+      <body >{children}</body>
     </html>
   );
 };

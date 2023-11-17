@@ -13,6 +13,7 @@ function Question({ question, user }) {
       <button className="next"> СЛЕДУЮЩИЙ ВОПРОС</button>
     </div>
   );
+
 }
 
 module.exports = Question;
