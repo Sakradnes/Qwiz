@@ -13,7 +13,8 @@ router.post("/", async (req, res) => {
   try {
     const { name } = req.body;
     if (name) {
-      const newMember = await User.create({ name, score: 1 });
+      const newMember = await User.create({ name, score: 0 });
+      console.log(newMember);
       res.app.locals.user = newMember;
       res.redirect("/category");
     // window.location.href='/Category'
