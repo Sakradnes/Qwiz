@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.TEXT,
       },
+      difficulty: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
       category_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
