@@ -1,32 +1,29 @@
-console.log(123);
-const buttonNext = document.querySelector(".next");
+const buttonNext = document.querySelector("#MainQuestion");
 const where = document.querySelector(".free");
-console.log(buttonNext);
-if (buttonNext) {
-  buttonNext.addEventListener("click", async (event) => {
-    event.preventDefault();
-    const card = event.target.closest(".all");
 
-    console.log(buttonNext.dataset.id, buttonNext.dataset.idi);
-    
+buttonNext.addEventListener("click", async (event) => {
+  //event.preventDefault();
+
+  if (event.target.classList.contains("next")) {
+    const card = event.target.closest(".all");
     const res = await fetch(
-      `/questions/${buttonNext.dataset.id}/${buttonNext.dataset.idi}`,
+      `/questions/${card.dataset.id}/${card.dataset.idi}`,
       {
         method: "GET",
       }
     );
 
     const questionData = await res.json();
-    card.remove()
-    
-    // if(questionData.html) {
-    //     console.log('---------');
-    where.insertAdjacentHTML("beforebegin", questionData.html);
-    // }
-    
-    
-  });
-}
+    card.remove();
+
+    if (questionData.html) {
+      where.insertAdjacentHTML("beforebegin", questionData.html);
+    } else {
+      window.location.href = "/category";
+      console.log("catch you");
+    }
+  }
+});
 
 // // Функция для загрузки вопроса с сервера
 // async function loadQuestion(index) {

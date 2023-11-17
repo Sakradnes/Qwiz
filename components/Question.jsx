@@ -1,21 +1,16 @@
 const React = require('react');
-const Layout = require('./Layout');
 
 
 
 
-
-function Question({ title , question }){
+function Question({ question }){
 return ( 
- 
-    <Layout title={title}> 
-    <div className='all'>{question.content} 
-        <div >
-             <button className='next' data-id={question.category_id} data-idi={question.id}>СЛЕДУЮЩИЙ ВОПРОС</button>
-        </div> 
+    <div className='all' data-id={question.category_id} data-idi={question.id}>
+        {question.content}
+    <button className='next'> СЛЕДУЮЩИЙ ВОПРОС</button> 
+    <button className='ball'> {question.difficulty} </button> 
+    {console.log(question.difficulty)}
         </div>
-        <div className='free'></div>
-    </Layout>
  )
 }
 

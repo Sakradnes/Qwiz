@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const { Op } = require("sequelize");
 const AllQuestions = require("../components/AllQuestions");
+const QuestionForm = require("../components/Question");
 
-const { Question, Category } = require("../db/models");
+const { Question} = require("../db/models");
+
+//получить первый вопрос
 
 router.get("/:idcategory", async (req, res) => {
   try {
@@ -10,7 +14,7 @@ router.get("/:idcategory", async (req, res) => {
     const questions = await Question.findAll({
       limit:1 ,where: { category_id: idcategory },
     });
-    // console.log(questions);
+    console.log(questions);
     const html = res.renderComponent(AllQuestions, {
       title: "Questions",
       questions,
@@ -21,27 +25,73 @@ router.get("/:idcategory", async (req, res) => {
   }
 });
 
+//получить следующий вопрос
+
 router.get("/:idcategory/:idQuestion", async (req, res) => {
     try {
       const { idcategory } = req.params;
       const {  idQuestion } = req.params;
       console.log(idcategory, idQuestion);
-      const questions = await Question.findAll({
-        where: { category_id: idcategory },
+      const questions = await Question.findOne({
+        where:{ [Op.and]: 
+          [
+            { category_id: idcategory }, 
+            {id: {[Op.gt]: Number(idQuestion)}}
+          ]}
       });
-       if(questions[Number(idQuestion)+1]){
-         const html = res.renderComponent(AllQuestions, {
-           title: "Questions",
-           questions:[questions[Number(idQuestion)+1]]
-   
+      console.log(questions);
+      if(questions){
+         const html = res.renderComponent(QuestionForm, {
+           question:questions
          }, { doctype: false });
-   res.json({html});
-       }else{
-        window.location.href="/category";
-       }
+   res.json({html});}
+   else{res.json({});}
+       
     } catch ({ message }) {
       res.status(500).send(message);
     }
   });
+
+  //получить ответ
+
+  router.get("/:idcategory/:idQuestion/answer", async (req, res) => {
+    try {
+      const { idcategory } = req.params;
+      const {  idQuestion } = req.params;
+      console.log(idcategory, idQuestion);
+      const questions = await Question.findOne({
+        where:{ [Op.and]: 
+          [
+            { category_id: idcategory }, 
+            {id: idQuestion}
+          ]}
+      });
+      console.log(questions);
+   res.json({questions});}
+     catch ({ message }) {
+      res.status(500).send(message);
+    }
+  }
+  );
+
+  //увеличить сложность
+  router.put("/:idQuestion/answer/difficulty", async (req, res) => {
+    try {
+      const {difficulty}=req.body
+      const {  idQuestion } = req.params;
+      const data = await Question.update({ difficulty: Number(difficulty)},{
+        where:{id: idQuestion}});
+
+      if(data[0] > 0){
+        res.status(200).json({message:'ok'})
+    }else{
+        res.status(400).json({message:'ne ok'})
+    }
+} catch ({message}) {
+console.log(message,'err')
+res.status(500).json({message})
+}
+})
+
 
 module.exports = router;
