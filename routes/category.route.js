@@ -1,5 +1,4 @@
 const router = require("express").Router();
-// const CategoryBak = require('../components/CategoryBak');s
 const CategoryPage = require("../components/CategoryPage");
 
 const { Category } = require("../db/models");
