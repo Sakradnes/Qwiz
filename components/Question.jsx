@@ -8,9 +8,9 @@ function Question({ question, user }) {
       data-idi={question.id}
       data-udi={user.id}
     >
-      {question.category_id == '3' && <img src={question.content}></img>}
+      ВОПРОС:{question.category_id == '3' && <img src={question.content}></img>}
       {question.category_id != '3' && <div>{question.content}</div>}
-      <button className="next"> СЛЕДУЮЩИЙ ВОПРОС</button>
+      <button className="next buttonAuth"> СЛЕДУЮЩИЙ ВОПРОС</button>
     </div>
   );
 
