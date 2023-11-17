@@ -11,13 +11,11 @@ module.exports = function Answer({ question, user }) {
           data-id={question.category_id}
           data-idi={question.id}
           data-udi={user.id}
-          placeholder="ваш ответ сюда"
-        /><p className='dop'>scores:</p>
-        <button className="yourScore">{user.score}</button>
+        />
+        <div className="yourScore">{user.score}</div>
 
         <div className="Compare"></div>
-        <div className='dop'>Cложность вопроса:</div>
-        <button className="Dif">{question.difficulty}</button>
+        <div className='Dif'>{question.difficulty}</div>
       </div>
     </div>
   );

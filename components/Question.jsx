@@ -1,4 +1,4 @@
-const React = require('react');
+const React = require("react");
 
 function Question({ question, user }) {
   return (
@@ -8,12 +8,13 @@ function Question({ question, user }) {
       data-idi={question.id}
       data-udi={user.id}
     >
-      ВОПРОС:{question.category_id == '3' && <img src={question.content}></img>}
-      {question.category_id != '3' && <div>{question.content}</div>}
+      ВОПРОС:{question.category_id == "3" && (
+        <img className="img" src={question.content}></img>
+      )}
+      {question.category_id != "3" && <div>{question.content}</div>}
       <button className="next buttonAuth"> СЛЕДУЮЩИЙ ВОПРОС</button>
     </div>
   );
-
 }
 
 module.exports = Question;

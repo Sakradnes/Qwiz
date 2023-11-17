@@ -1,9 +1,9 @@
 body {
-  width: 100%;
+  width: 100v;
   height: 100vh;
   background-image: url(https://i.pinimg.com/originals/c1/4b/76/c14b762c9343edcd3003ce3813e0700a.gif);
   background-size: cover;
-
+overflow-y: hidden;
   padding: 0px;
   margin: 50px;
 
@@ -76,6 +76,15 @@ input {
 
 .all {
   color: rgb(255, 226, 226);
+  display: flex;
+  align-items: center;
 }
-.privet {
+.dop {
+  color: rgb(255, 226, 226);
 }
+
+
+.img {
+  width: 400px;
+}
+
